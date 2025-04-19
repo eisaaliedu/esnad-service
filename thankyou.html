@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تأكيد الطلب - خدمة إسناد</title>
+    
+    <!-- Bootstrap RTL CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts - Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .star-rating {
+            direction: ltr;
+            display: inline-flex;
+            gap: 0.5rem;
+        }
+        .star-rating input {
+            display: none;
+        }
+        .star-rating label {
+            cursor: pointer;
+            color: #ddd;
+            font-size: 2rem;
+        }
+        .star-rating label:hover,
+        .star-rating label:hover ~ label,
+        .star-rating input:checked ~ label {
+            color: #ffd700;
+        }
+        .google-review-btn {
+            display: none;
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+            text-decoration: none;
+        }
+        .google-review-btn:hover {
+            background-color: #3367d6;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <main class="py-4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="card border-0 shadow-sm confirmation-card">
+                        <div class="card-body p-4">
+                            <!-- Success Icon -->
+                            <div class="text-center mb-3">
+                                <div class="success-icon-circle mx-auto">
+                                    <i class="fas fa-check fa-2x text-white"></i>
+                                </div>
+                            </div>
+
+                            <!-- Main Content -->
+                            <div class="text-center mb-4">
+                                <h1 class="success-title h3 mb-2">تم إرسال طلبك بنجاح</h1>
+                                <p class="text-muted mb-0">سيتم مراجعة طلبك خلال 3-5 أيام عمل</p>
+                            </div>
+
+                            <!-- Timeline Steps -->
+                            <div class="timeline-steps mb-4">
+                                <div class="step active">
+                                    <i class="fas fa-paper-plane"></i>
+                                    <span>تم الإرسال</span>
+                                </div>
+                                <div class="step">
+                                    <i class="fas fa-file-signature"></i>
+                                    <span>المراجعة</span>
+                                </div>
+                                <div class="step">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>الاعتماد</span>
+                                </div>
+                            </div>
+
+                            <!-- Quick Actions -->
+
+
+                            <!-- Next Steps -->
+                            <div class="next-steps p-3 bg-light rounded mb-4">
+                                <ul class="list-unstyled mb-0">
+                                    <li class="mb-2">
+                                        <i class="fas fa-check-circle text-success ms-2"></i>
+                                        سيتم مراجعة البيانات والمرفقات
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="fas fa-envelope text-success ms-2"></i>
+                                        ستصلك رسالة تأكيد على بريدك الإلكتروني
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-phone text-success ms-2"></i>
+                                        للاستفسار: <span class="fw-bold">XXXX800</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="d-flex justify-content-center gap-2 mb-4">
+                                <a href="index.html" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-home ms-1"></i>الرئيسية
+                                </a>
+                            </div>
+                            <!-- Rating Section (Compact) -->
+                            <div class="text-center mt-4 pt-3 border-top">
+                                <p class="small text-muted mb-2">كيف كانت تجربتك معنا؟</p>
+                                <div class="star-rating d-inline-flex mb-3">
+                                    <input type="radio" id="star5" name="rating" value="5">
+                                    <label for="star5" class="fas fa-star"></label>
+                                    <input type="radio" id="star4" name="rating" value="4">
+                                    <label for="star4" class="fas fa-star"></label>
+                                    <input type="radio" id="star3" name="rating" value="3">
+                                    <label for="star3" class="fas fa-star"></label>
+                                    <input type="radio" id="star2" name="rating" value="2">
+                                    <label for="star2" class="fas fa-star"></label>
+                                    <input type="radio" id="star1" name="rating" value="1">
+                                    <label for="star1" class="fas fa-star"></label>
+                                </div>
+                                <div class="feedback-section" style="display: none;">
+                                    <textarea class="form-control mb-3" id="feedbackText" rows="3" placeholder="نرحب بملاحظاتك وتعليقاتك"></textarea>
+                                    <div id="googleReviewPrompt" style="display: none;">
+                                        <p class="small text-muted mb-2">هل ترغب في مشاركة تقييمك على Google؟</p>
+                                        <button class="btn btn-primary btn-sm" onclick="redirectToGoogleReview()">نعم</button>
+                                        <button class="btn btn-secondary btn-sm" onclick="submitFeedbackOnly()">لا</button>
+                                    </div>
+                                    <button id="submitFeedback" class="btn btn-primary btn-sm">إرسال</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Rating functionality
+        document.querySelectorAll('input[name="rating"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const rating = parseInt(this.value);
+                const feedbackSection = document.querySelector('.feedback-section');
+                const googleReviewPrompt = document.getElementById('googleReviewPrompt');
+                
+                if (rating < 4) {
+                    // Show feedback section for ratings less than 4
+                    feedbackSection.style.display = 'block';
+                    googleReviewPrompt.style.display = 'none';
+                } else {
+                    // Show Google review prompt for ratings 4-5
+                    feedbackSection.style.display = 'block';
+                    googleReviewPrompt.style.display = 'block';
+                }
+            });
+        });
+
+        // Handle feedback submission
+        document.getElementById('submitFeedback').addEventListener('click', function() {
+            const feedback = document.getElementById('feedbackText').value.trim();
+            const rating = document.querySelector('input[name="rating"]:checked').value;
+            
+            if (feedback) {
+                // Here you would typically send the feedback to your server
+                console.log('Feedback submitted:', { rating, feedback });
+                
+                // Show success message
+                alert('شكراً لتعليقك! تم إرسال ملاحظاتك بنجاح.');
+                
+                // Reset form
+                document.getElementById('feedbackText').value = '';
+                document.querySelector('.feedback-section').style.display = 'none';
+                document.querySelectorAll('input[name="rating"]').forEach(radio => radio.checked = false);
+            } else {
+                alert('يرجى إدخال تعليقك قبل الإرسال');
+            }
+        });
+
+        // Google Review Functions
+        function redirectToGoogleReview() {
+            window.open('https://www.google.com/search?sca_esv=c181bb06170d857b&biw=1536&bih=791&sxsrf=AHTn8zrxb23vVkrjBSI0P3ws4asbR69scw:1745050826786&si=APYL9bs7Hg2KMLB-4tSoTdxuOx8BdRvHbByC_AuVpNyh0x2KzR4DzFl3qcKAcrMumx4XmQ7uGX7tkWt7PS7csc8z5ClpiE_DsT4wFYQ9pxzv4uo3_vzL-C1ygeksFLiERwKfxiZSFhqA0KAxce6gaHiheW8Dt9UmtA%3D%3D&q=Housing+Department+Reviews&sa=X&ved=2ahUKEwij5ZT11OOMAxXVnP0HHUA4FnwQ0bkNegQIKBAE#lrd=0x3e5f598862df4b6b:0x7cda7a0bfe9280a5,3,,,,', '_blank');
+            submitFeedbackOnly();
+        }
+
+        function submitFeedbackOnly() {
+            const feedback = document.getElementById('feedbackText').value.trim();
+            const rating = document.querySelector('input[name="rating"]:checked').value;
+            
+            if (feedback) {
+                // Here you would typically send the feedback to your server
+                console.log('Feedback submitted:', { rating, feedback });
+                alert('شكراً لتعليقك! تم إرسال ملاحظاتك بنجاح.');
+            }
+            
+            // Reset form
+            document.getElementById('feedbackText').value = '';
+            document.querySelector('.feedback-section').style.display = 'none';
+            document.querySelectorAll('input[name="rating"]').forEach(radio => radio.checked = false);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل الطلب - خدمة إسناد</title>
+    
+    <!-- Bootstrap RTL CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts - Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* Custom styles for this page */
+        .form-check-label {
+            border: 2px solid #dee2e6;
+            padding: 1rem;
+            border-radius: 12px;
+            width: 100%;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .form-check-input:checked + .form-check-label {
+            border-color: #f4a261;
+            background-color: #fff3e0;
+            color: #f4a261;
+            box-shadow: 0 2px 8px rgba(244, 162, 97, 0.2);
+        }
+
+        .form-check-input:hover + .form-check-label {
+            border-color: #f4a261;
+            transform: translateY(-2px);
+        }
+
+        .form-select {
+            padding: 0.75rem 1rem;
+            border: 2px solid #dee2e6;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .form-select:focus {
+            border-color: #f4a261;
+            box-shadow: 0 0 0 0.25rem rgba(244, 162, 97, 0.25);
+        }
+
+        .form-control {
+            padding: 0.75rem 1rem;
+            border: 2px solid #dee2e6;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #f4a261;
+            box-shadow: 0 0 0 0.25rem rgba(244, 162, 97, 0.25);
+        }
+
+        .btn-primary {
+            background-color: #f4a261;
+            border-color: #f4a261;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #e76f51;
+            border-color: #e76f51;
+            transform: translateY(-2px);
+        }
+
+        .btn-light {
+            background-color: #e9ecef;
+            border-color: #e9ecef;
+            color: #495057;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-light:hover {
+            background-color: #dee2e6;
+            border-color: #dee2e6;
+            transform: translateY(-2px);
+        }
+
+        .helper-text {
+            color: #6c757d;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        .section-title {
+            color: #2d3436;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .character-counter {
+            color: #6c757d;
+            font-size: 0.75rem;
+            text-align: left;
+            margin-top: 0.25rem;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-xl-7">
+                <div class="card shadow-sm">
+                    <div class="card-body p-4">
+                        <h2 class="mb-4 text-black">تفاصيل الطلب</h2>
+                        
+                        <form id="request-form" class="needs-validation" novalidate>
+                            <!-- Design Type -->
+                            <div class="mb-4">
+                                <h5 class="section-title">نوع التصميم</h5>
+                                <div class="d-flex gap-3">
+                                    <div class="form-check flex-grow-1">
+                                        <input class="form-check-input visually-hidden" type="radio" name="designType" id="basicDesign" value="basic" checked required>
+                                        <label class="form-check-label d-flex align-items-center justify-content-center gap-2" for="basicDesign">
+                                            <i class="fas fa-home"></i>
+                                            أساسي
+                                        </label>
+                                    </div>
+                                    <div class="form-check flex-grow-1">
+                                        <input class="form-check-input visually-hidden" type="radio" name="designType" id="mirrorDesign" value="mirror" required>
+                                        <label class="form-check-label d-flex align-items-center justify-content-center gap-2" for="mirrorDesign">
+                                            <i class="fas fa-sync-alt"></i>
+                                            عكسي
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="helper-text">
+                                    <i class="fas fa-info-circle me-1"></i>
+                                    اختر "عكسي" إذا كانت واجهة الأرض تتطلب عكس التصميم ليكون مناسباً.
+                                </div>
+                            </div>
+
+                            <!-- Land Selection -->
+                            <div class="mb-4">
+                                <h5 class="section-title">اختيار الأرض</h5>
+                                <select class="form-select mb-3" id="landSelection" required>
+                                    <option value="" disabled>اختر أرضك...</option>
+                                    <option value="land123" selected>أرض رقم 123 - مويلح</option>
+                                    <option value="land124">أرض رقم 124 - مويلح</option>
+                                    <option value="other">أخرى</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    يرجى اختيار الأرض
+                                </div>
+                                
+                                <!-- Custom Land Details (Hidden by default) -->
+                                <div id="customLandDetails" class="d-none">
+                        
+                                    
+                                    <!-- File Upload Section -->
+                                    <div class="file-upload-container">
+                                        <label for="landMap" class="file-upload-label">
+                                            <i class="fas fa-cloud-upload-alt"></i>
+                                            <span>خارطة الأرض</span>
+                                        </label>
+                                        <input type="file" 
+                                               id="landMap" 
+                                               class="file-upload-input" 
+                                               accept=".pdf,.jpg,.jpeg,.png"
+                                               aria-label="خارطة الأرض">
+                                        <div id="filePreview" class="file-preview d-none">
+                                            <div class="selected-file">
+                                                <i class="fas fa-file-alt"></i>
+                                                <span class="file-name"></span>
+                                                <button type="button" class="remove-file" aria-label="حذف الملف">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <!-- Additional Notes -->
+                            <div class="mb-4">
+                                <h5 class="section-title">
+                                    ملاحظات إضافية
+                                    <span class="text-muted fw-normal">(اختياري)</span>
+                                </h5>
+                                <textarea class="form-control" id="notes" rows="4" 
+                                    placeholder="أدخل أي ملاحظات تود مشاركتها..."
+                                    maxlength="500"></textarea>
+                                <div class="character-counter">
+                                    <span id="charCount">0</span> / 500
+                                </div>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="d-flex gap-3">
+                                <button type="button" class="btn btn-light flex-grow-1 py-2" id="backButton" onclick="window.location.href='search.html'">
+                                    <i class="fas fa-arrow-right ms-2"></i>
+                                    <span>الرجوع</span>
+                                </button>
+                                <button type="button" class="btn btn-primary flex-grow-1 py-2" id="nextButton" onclick="window.location.href='payment.html'">
+                                    <span>التالي</span>
+                                    <i class="fas fa-arrow-left me-2"></i>
+                                </button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>

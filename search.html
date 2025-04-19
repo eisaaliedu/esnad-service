@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>البحث العام عن التصميم - خدمة إسناد</title>
+    
+    <!-- Bootstrap RTL CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts - Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-light">
+    <div class="container-fluid py-4">
+        <div class="row g-4">
+            <!-- Filter Panel (Right Side) -->
+            <div class="col-lg-3">
+                <div class="filter-panel bg-white rounded-3 shadow-sm p-4">
+                    <h2 class="h4 mb-4">البحث العام عن التصميم</h2>
+                    
+                    <!-- Search Input with Smart Animation -->
+                    <div class="mb-4">
+                        <div class="search-input">
+                            <i class="fas fa-search"></i>
+                            <input type="text" class="form-control smart-search" id="searchInput" 
+                                   placeholder="فيلا حديثة بمسبح داخلي" autocomplete="off">
+                            <div class="search-examples" id="searchExamples"></div>
+                        </div>
+                    </div>
+
+                    <!-- Number of Floors -->
+                    <div class="filter-section mb-4">
+                        <h3 class="h6 mb-3">عدد الطوابق</h3>
+                        <div class="btn-group w-100" role="group">
+                            <input type="checkbox" class="btn-check" name="floors" id="floor1" value="1">
+                            <label class="btn btn-outline-primary" for="floor1">طابق واحد</label>
+                            <input type="checkbox" class="btn-check" name="floors" id="floor2" value="2">
+                            <label class="btn btn-outline-primary" for="floor2">طابقين</label>
+                        </div>
+                    </div>
+
+                    <!-- Design Style -->
+                    <div class="filter-section mb-4">
+                        <h3 class="h6 mb-3">نمط التصميم</h3>
+                        <div class="style-buttons">
+                            <input type="checkbox" class="btn-check" name="style" id="style1" value="islamic">
+                            <label class="btn btn-outline-primary mb-2" for="style1">إسلامي</label>
+                            <input type="checkbox" class="btn-check" name="style" id="style2" value="andalusian">
+                            <label class="btn btn-outline-primary mb-2" for="style2">أندلسي</label>
+                            <input type="checkbox" class="btn-check" name="style" id="style3" value="traditional">
+                            <label class="btn btn-outline-primary mb-2" for="style3">تقليدي</label>
+                            <input type="checkbox" class="btn-check" name="style" id="style4" value="modern">
+                            <label class="btn btn-outline-primary mb-2" for="style4">حديث</label>
+                            <input type="checkbox" class="btn-check" name="style" id="style5" value="local">
+                            <label class="btn btn-outline-primary mb-2" for="style5">محلي</label>
+                        </div>
+                    </div>
+
+                    <!-- Number of Rooms -->
+                    <div class="filter-section mb-4">
+                        <h3 class="h6 mb-3">عدد الغرف</h3>
+                        <div class="btn-group w-100" role="group">
+                            <input type="checkbox" class="btn-check" name="rooms" id="room3" value="3">
+                            <label class="btn btn-outline-primary" for="room3">3</label>
+                            <input type="checkbox" class="btn-check" name="rooms" id="room4" value="4">
+                            <label class="btn btn-outline-primary" for="room4">4</label>
+                            <input type="checkbox" class="btn-check" name="rooms" id="room5" value="5">
+                            <label class="btn btn-outline-primary" for="room5">5</label>
+                            <input type="checkbox" class="btn-check" name="rooms" id="room6" value="6">
+                            <label class="btn btn-outline-primary" for="room6">6+</label>
+                        </div>
+                    </div>
+
+                    <!-- Area Range -->
+                    <div class="filter-section mb-4">
+                        <h3 class="h6 mb-3">المساحة</h3>
+                        <div class="input-group">
+                            <input type="number" class="form-control text-center" placeholder="100" min="0">
+                            <span class="input-group-text border-start-0">إلى</span>
+                            <input type="number" class="form-control text-center" placeholder="200" min="0">
+                            <select class="form-select text-center" style="max-width: 80px;">
+                                <option selected>م²</option>
+                                <option>قدم²</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Cost Range -->
+                    <div class="filter-section mb-4">
+                        <h3 class="h6 mb-3">التكلفة (درهم)</h3>
+                        <div class="input-group">
+                            <input type="number" class="form-control text-center" placeholder="800,000" min="0">
+                            <span class="input-group-text border-start-0">إلى</span>
+                            <input type="number" class="form-control text-center" placeholder="1,400,000" min="0">
+                        </div>
+                    </div>
+
+                    <!-- Consultant Search - Replace the existing consultant search with this -->
+                    <div class="filter-section">
+                        <h3 class="h6 mb-3">اسم الاستشاري</h3>
+                        <div class="consultant-dropdown">
+                            <input type="text" class="form-control" id="consultantSearch" 
+                                   placeholder="ابحث عن اسم الاستشاري..." autocomplete="off">
+                            <div class="consultant-list" id="consultantList">
+                                <div class="consultant-item" data-value="دار الهندسة">دار الهندسة</div>
+                                <div class="consultant-item" data-value="الهندسة المتحدة">الهندسة المتحدة</div>
+                                <div class="consultant-item" data-value="آرك ديزاين">آرك ديزاين</div>
+                                <div class="consultant-item" data-value="بيت السكن">بيت السكن</div>
+                                <div class="consultant-item" data-value="الخليج المعماري">الخليج المعماري</div>
+                                <div class="consultant-item" data-value="أبعاد للاستشارات">أبعاد للاستشارات</div>
+                                <div class="consultant-item" data-value="فيجن ديزاين">فيجن ديزاين</div>
+                                <div class="consultant-item" data-value="مكتب الإمارات">مكتب الإمارات</div>
+                                <div class="consultant-item" data-value="الهندسية المتقدمة">الهندسية المتقدمة</div>
+                                <div class="consultant-item" data-value="المهندسون المتحدون">المهندسون المتحدون</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design Cards (Left Side) -->
+            <div class="col-lg-9">
+                <div class="row g-4">
+                    <!-- Design Card 1 - Suggested -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="design-card" data-bs-toggle="modal" data-bs-target="#designDetailsModal" style="cursor: pointer;">
+                            <div class="design-card__image">
+                                <img src="https://sakan.ae/admin/Images/AMS-05_Style_Design1_Large202412181501173604.png" alt="تصميم A1" class="img-fluid" loading="lazy" onerror="this.src='path/to/fallback-image.jpg'; this.onerror=null;">
+                                <div class="design-card__overlay"></div>
+                                <div class="design-card__badges">
+                                    <span class="badge-suggestion">مقترح لك</span>
+                                    <span class="badge-status">متاح</span>
+                                </div>
+                                <div class="design-actions">
+                                    <button class="btn-action btn-favorite" aria-label="إضافة للمفضلة">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                    <button class="btn-action btn-share" aria-label="مشاركة">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                                    <button class="btn-action btn-compare" aria-label="مقارنة">
+                                        <i class="fas fa-exchange-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="design-card__content">
+                                <div class="design-card__header">
+                                    <h3 class="design-title">فيلا A1</h3>
+                                    <div class="design-price">
+                                        <i class="fas fa-coins"></i>
+                                        <span class="amount">850,000</span>
+                                        <span class="currency">درهم</span>
+                                    </div>
+                                </div>
+                                <div class="design-specs">
+                                    <div class="spec-item" data-tooltip="عدد الطوابق">
+                                        <i class="fas fa-building"></i>
+                                        <span>طابقين</span>
+                                    </div>
+                                    <div class="spec-item" data-tooltip="عدد الغرف">
+                                        <i class="fas fa-door-open"></i>
+                                        <span>4 غرف</span>
+                                    </div>
+                                    <div class="spec-item" data-tooltip="المساحة الكلية">
+                                        <i class="fas fa-ruler"></i>
+                                        <span>250م²</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Design Details Modal -->
+    <div class="modal fade design-details-modal" id="designDetailsModal" tabindex="-1" aria-labelledby="designDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header border-0 pb-0 pt-4 px-4">
+                    <div class="d-flex align-items-center w-100">
+                        <h5 class="modal-title h4 fw-bold mb-0" id="designDetailsModalLabel">تفاصيل التصميم</h5>
+                        <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                </div>
+                
+                <!-- Modal Body -->
+                <div class="modal-body px-4">
+                    <div class="row g-4">
+                        <!-- Right Column - Visual Content -->
+                        <div class="col-lg-6">
+                            <!-- Visual Content Container -->
+                            <div class="visual-content-container">
+                                <!-- Design Images Section -->
+                                <div class="design-images mb-4">
+                                    <div class="section-header d-flex justify-content-between align-items-center mb-3">
+                                        <h6 class="fw-bold mb-0">صور التصميم</h6>
+                                        <div >1/3</div>
+                                    </div>
+                                  
+                                    <div class="main-image-container position-relative mb-0">
+                                        <img src="https://sakan.ae/admin/Images/AMS-05_Style_Design1_Large202412181501173604.png" 
+                                        class="img-fluid rounded-3 d-block" style="max-width: 100%; height: auto;" alt="تصميم المنزل"
+                                             onerror="this.src='path/to/fallback-image.jpg'; this.onerror=null;">
+                                        <div class="image-navigation">
+                                            <button class="nav-btn prev" title="السابق"><i class="fas fa-chevron-right"></i></button>
+                                            <button class="nav-btn next" title="التالي"><i class="fas fa-chevron-left"></i></button>
+                                        </div>
+                                        <div class="zoom-controls position-absolute top-0 start-0 m-3">
+                                            <button class="zoom-btn" title="تكبير"><i class="fas fa-search-plus"></i></button>
+                                        </div>
+                                    </div>
+                              
+                                </div>
+
+                                <!-- Floor Plans Section -->
+                                <div class="design-images mb-4">
+                                    <div class="section-header d-flex justify-content-between align-items-center mb-3">
+                                        <h6 class="fw-bold mb-0">المخطط الداخلي للمنزل</h6>
+                                        <div >1/3</div>
+                                    </div>
+                                   
+                                    <div class="main-image-container position-relative mb-3">
+                                        <img src="https://sakan.ae/admin/Images/AMS-05_Style_Design1_Large202412181501173604.png" 
+                                        class="img-fluid rounded-3 d-block" style="max-width: 100%; height: auto;" alt="تصميم المنزل"
+                                             onerror="this.src='path/to/fallback-image.jpg'; this.onerror=null;">
+                                        <div class="image-navigation">
+                                            <button class="nav-btn prev" title="السابق"><i class="fas fa-chevron-right"></i></button>
+                                            <button class="nav-btn next" title="التالي"><i class="fas fa-chevron-left"></i></button>
+                                        </div>
+                                        <div class="zoom-controls position-absolute top-0 start-0 m-3">
+                                            <button class="zoom-btn" title="تكبير"><i class="fas fa-search-plus"></i></button>
+                                        </div>
+                                    </div>
+                              
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Left Column - Specifications -->
+                        <div class="col-lg-6">
+                            <!-- Quick Stats -->
+                            <div class="quick-stats mb-4">
+                                <div class="row g-2">
+                                    <div class="col-6">
+                                        <div class="stat-card">
+                                            <i class="fas fa-coins text-warning"></i>
+                                            <div class="stat-content">
+                                                
+                                                <div class="stat-value">850,000 درهم</div>
+                                                <div class="stat-label">التكلفة</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="stat-card">
+                                            <i class="fas fa-ruler text-primary"></i>
+                                            <div class="stat-content">
+                                                <div class="stat-value">250م²</div>
+                                                <div class="stat-label">المساحة</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Detailed Specifications -->
+                            <div class="specs-section mb-4">
+                                <h6 class="fw-bold mb-3">مواصفات التصميم</h6>
+                                <div class="specs-list">
+                                    <div class="spec-item">
+                                        <i class="fas fa-door-open text-primary"></i>
+                                        <span class="spec-label">عدد الغرف:</span>
+                                        <span class="spec-value">4</span>
+                                    </div>
+                                    <div class="spec-item">
+                                        <i class="fas fa-building text-info"></i>
+                                        <span class="spec-label">عدد الطوابق:</span>
+                                        <span class="spec-value">2</span>
+                                    </div>
+                                    <div class="spec-item">
+                                        <i class="fas fa-expand text-success"></i>
+                                        <span class="spec-label">أبعاد البيت:</span>
+                                        <span class="spec-value">15م × 17م</span>
+                                    </div>
+                                    <div class="spec-item">
+                                        <i class="fas fa-snowflake text-info"></i>
+                                        <span class="spec-label">نوع التكييف:</span>
+                                        <span class="spec-value">مركزي</span>
+                                    </div>
+                                    <div class="spec-item">
+                                        <i class="fas fa-arrows-alt-v text-primary"></i>
+                                        <span class="spec-label">ارتفاع السقف:</span>
+                                        <span class="spec-value">3.2 متر</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Additional Features -->
+                            <div class="features-section">
+                                <h6 class="fw-bold mb-3">مميزات إضافية</h6>
+                                <div class="features-grid">
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle text-success"></i>
+                                        <span>غرفة معيشة عائلية واسعة</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle text-success"></i>
+                                        <span>مطبخ مغلق</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle text-success"></i>
+                                        <span>مجلس مستقل مع دورة مياه</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle text-success"></i>
+                                        <span>فناء داخلي</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer border-0 px-4 pb-4">
+                    <div class="d-flex w-100">
+                        <button type="button" class="btn btn-primary flex-grow-1 py-2" onclick="window.location.href='request.html'">
+                            <i class="fas fa-arrow-left me-2"></i>متابعة الطلب
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>

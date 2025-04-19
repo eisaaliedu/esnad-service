@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خدمة إسناد</title>
+    
+    <!-- Bootstrap RTL CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts - Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Main Content -->
+    <main class="py-4">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h2 class="mb-2">خدمة إسناد</h2>
+                <p class="text-muted">خدمة إلكترونية متكاملة للدعم السكني من دائرة الإسكان - حكومة الشارقة</p>
+            </div>
+
+            <!-- Service Icons -->
+            <div class="row justify-content-center g-4 mb-5">
+                <div class="col-6 col-md-3 text-center">
+                    <a href="#" class="text-decoration-none service-link active" data-section="about">
+                        <div class="service-icon mb-3">
+                            <i class="fas fa-info-circle fa-2x"></i>
+                        </div>
+                        <h3 class="h6">عن الخدمة</h3>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <a href="#" class="text-decoration-none service-link" data-section="documents">
+                        <div class="service-icon mb-3">
+                            <i class="fas fa-file-alt fa-2x"></i>
+                        </div>
+                        <h3 class="h6">المستندات المطلوبة</h3>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <a href="#" class="text-decoration-none service-link" data-section="eligibility">
+                        <div class="service-icon mb-3">
+                            <i class="fas fa-check-circle fa-2x"></i>
+                        </div>
+                        <h3 class="h6">شروط الاستحقاق</h3>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <a href="#" class="text-decoration-none service-link" data-section="faq">
+                        <div class="service-icon mb-3">
+                            <i class="fas fa-question-circle fa-2x"></i>
+                        </div>
+                        <h3 class="h6">الأسئلة الأكثر شيوعاً</h3>
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Content Sections -->
+            <div class="content-sections mb-4">
+                <!-- Documents Section -->
+                <section id="documents" class="content-section d-none">
+                    <h3 style="color: #83C0D8" class="mb-3">المستندات المطلوبة</h3>
+                    <p>المستندات الأساسية المطلوبة تشمل: خارطة الأرض الرسمية من دائرة التخطيط والمساحة (في حال وجود المرفق يتم التقديم عليه ضمن الخدمة).</p>
+                </section>
+
+                <!-- Eligibility Section -->
+                <section id="eligibility" class="content-section d-none">
+                    <h3 style="color: #83C0D8" class="mb-3">شروط الاستحقاق</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i> أن يكون المتقدم قد حصل على قرار الدعم السكني من دائرة الإسكان.</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i> امتلاك أرض سكنية في إمارة الشارقة.</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i> عدم وجود تصميم جاري اعتماده في ملف المستفيد.</li>
+                    </ul>
+                </section>
+
+                <!-- FAQ Section -->
+                <section id="faq" class="content-section d-none">
+                    <h3 style="color: #83C0D8" class="mb-3">الأسئلة الأكثر شيوعاً</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fas fa-question-circle" style="color: #ffa726; margin-right: 0.5rem"></i> هل يمكنني تعديل التصميم لاحقاً؟ نعم، يمكن تعديل التصميم في مرحلة ما قبل الاعتماد النهائي.</li>
+                        <li class="mb-3"><i class="fas fa-question-circle" style="color: #ffa726; margin-right: 0.5rem"></i> هل يمكن التقديم دون قرار دعم؟ لا، القرار ضروري لتسجيل الطلب.</li>
+                        <li class="mb-3"><i class="fas fa-question-circle" style="color: #ffa726; margin-right: 0.5rem"></i> هل الخدمة مجانية؟ نعم، خدمة إسناد مجانية تماماً ضمن منظومة الدعم السكني.</li>
+                    </ul>
+                </section>
+
+                <!-- About Service -->
+                <section id="about" class="content-section">
+                    <h3 style="color: #83C0D8" class="mb-3">عن الخدمة</h3>
+                    <p>تهدف خدمة إسناد إلى توفير حلول سكنية متكاملة للمواطنين وفق أعلى معايير الجودة والكفاءة.</p>
+                    <p>يمر الطلب بعدة مراحل تشمل: التقديم، التدقيق، التقييم، والموافقة النهائية.</p>
+                </section>
+            </div>
+
+            <!-- Submit Button Section -->
+            <div class="text-center submit-button-section">
+                <div class="cta-container">
+                    <a href="search.html" 
+                       class="btn btn-primary cta-button" 
+                       role="button"
+                       aria-label="البحث عن التصاميم المتوفرة">
+                        <span class="cta-text">للتقديم اضغط هنا</span>
+                        <i class="fas fa-arrow-left cta-icon" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-light py-3 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">© 2025 دائرة الإسكان - حكومة الشارقة</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+</body>
+</html> 
