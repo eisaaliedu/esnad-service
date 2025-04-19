@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Smart Search Animation
 const searchExamples = [
     "فيلا حديثة بمسبح داخلي",
-    "تصميم بطابق واحد و٤ غرف",
+    "تصميم بطابق واحد و5 غرف",
     "سعر أقل من ٩٠٠,٠٠٠ درهم"
 ];
 
@@ -392,231 +392,188 @@ compareBtn.addEventListener('click', () => {
 
 // Design Details Modal Functionality
 document.addEventListener('DOMContentLoaded', function() {
-    // Get all "View Details" buttons
-    const viewDetailsButtons = document.querySelectorAll('.btn-view');
+    // Get all design cards
+    const designCards = document.querySelectorAll('.design-card');
     
-    // Add click event listener to each button
-    viewDetailsButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
+    // Add click event listener to each card
+    designCards.forEach(card => {
+        card.addEventListener('click', function(e) {
+            if (e.target.closest('.design-actions')) {
+                return; // Don't open modal if clicking on action buttons
+            }
             
-            // Get design data from the card
-            const card = this.closest('.design-card');
+            // Get design data from the clicked card
             const designTitle = card.querySelector('.design-title').textContent;
             const designPrice = card.querySelector('.amount').textContent;
             const designArea = card.querySelector('[data-tooltip="المساحة الكلية"] span').textContent;
             const designRooms = card.querySelector('[data-tooltip="عدد الغرف"] span').textContent;
             const designFloors = card.querySelector('[data-tooltip="عدد الطوابق"] span').textContent;
+            const designImage = card.querySelector('.design-card__image img').src;
             
             // Update modal content with design data
-            const modal = document.querySelector('.design-details-modal');
-            modal.querySelector('.modal-title').textContent = designTitle;
-            modal.querySelector('[data-spec="price"] .spec-value').textContent = `${designPrice} درهم`;
-            modal.querySelector('[data-spec="area"] .spec-value').textContent = designArea;
-            modal.querySelector('[data-spec="rooms"] .spec-value').textContent = designRooms;
-            modal.querySelector('[data-spec="floors"] .spec-value').textContent = designFloors;
+            const modal = document.querySelector('#designDetailsModal');
             
-            // Show the modal
-            const modalInstance = new bootstrap.Modal(modal);
-            modalInstance.show();
+            // Update title
+            modal.querySelector('#designDetailsModalLabel').textContent = designTitle;
             
-            // Handle thumbnail clicks
-            const thumbnails = modal.querySelectorAll('.image-thumbnails img');
-            const mainImage = modal.querySelector('.main-image img');
+            // Update quick stats
+            const statValues = modal.querySelectorAll('.stat-value');
+            statValues[0].textContent = `${designPrice} درهم`; // Price stat
+            statValues[1].textContent = designArea; // Area stat
             
-            thumbnails.forEach(thumb => {
-                thumb.addEventListener('click', function() {
-                    // Remove active class from all thumbnails
-                    thumbnails.forEach(t => t.classList.remove('active'));
-                    // Add active class to clicked thumbnail
-                    this.classList.add('active');
-                    // Update main image
-                    mainImage.src = this.src;
-                    mainImage.alt = this.alt;
-                });
-            });
+            // Update specifications
+            const specsList = modal.querySelector('.specs-list');
+            const specValues = specsList.querySelectorAll('.spec-value');
+            specValues[0].textContent = designRooms.replace(' غرف', ''); // Rooms
+            specValues[1].textContent = designFloors === 'طابقين' ? '2' : '1'; // Floors
             
-            // Handle continue order button
-            const continueOrderBtn = modal.querySelector('.btn-continue');
-            continueOrderBtn.addEventListener('click', function() {
-                // Navigate to request page with design ID
-                window.location.href = `request.html?design=${encodeURIComponent(designTitle)}`;
+            // Update both main images (design and floor plan)
+            const mainImages = modal.querySelectorAll('.main-image-container img');
+            mainImages.forEach(img => {
+                img.src = designImage;
+                img.alt = designTitle;
             });
         });
     });
-    
-    // Close modal when clicking outside
-    const modal = document.querySelector('.design-details-modal');
-    modal.addEventListener('click', function(e) {
-        if (e.target === this) {
-            const modalInstance = bootstrap.Modal.getInstance(modal);
-            modalInstance.hide();
-        }
-    });
-    
-    // Handle keyboard navigation for thumbnails
-    const thumbnailContainer = document.querySelector('.image-thumbnails');
-    if (thumbnailContainer) {
-        thumbnailContainer.addEventListener('keydown', function(e) {
-            if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-                e.preventDefault();
-                const thumbnails = Array.from(this.querySelectorAll('img'));
-                const currentIndex = thumbnails.findIndex(thumb => thumb === document.activeElement);
-                
-                let newIndex;
-                if (e.key === 'ArrowRight') {
-                    newIndex = currentIndex > 0 ? currentIndex - 1 : thumbnails.length - 1;
-                } else {
-                    newIndex = currentIndex < thumbnails.length - 1 ? currentIndex + 1 : 0;
-                }
-                
-                thumbnails[newIndex].focus();
-                thumbnails[newIndex].click();
-            }
-        });
-    }
 });
 
-// Action buttons functionality
+// Action Buttons Functionality
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize action buttons for all design cards
-    const designCards = document.querySelectorAll('.design-card');
-    
-    designCards.forEach(card => {
-        const favoriteBtn = card.querySelector('.btn-favorite');
-        const shareBtn = card.querySelector('.btn-share');
-        const compareBtn = card.querySelector('.btn-compare');
-        
-        // Favorite button functionality
-        favoriteBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
+    // Favorite Button
+    const favoriteButtons = document.querySelectorAll('.btn-favorite');
+    favoriteButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent modal from opening
             const icon = this.querySelector('i');
-            
-            // Toggle favorite state
-            this.classList.toggle('active');
-            
-            // Toggle between far (outlined) and fas (filled) classes
-            if (this.classList.contains('active')) {
+            if (icon.classList.contains('far')) {
                 icon.classList.remove('far');
                 icon.classList.add('fas');
-                icon.style.color = '#dc3545'; // Red color for filled heart
+                this.classList.add('active');
+                showToast('تمت إضافة التصميم إلى المفضلة');
             } else {
                 icon.classList.remove('fas');
                 icon.classList.add('far');
-                icon.style.color = '#333'; // Default color for outlined heart
-            }
-            
-            // Show toast notification
-            showToast(
-                this.classList.contains('active') 
-                    ? 'تمت الإضافة إلى المفضلة' 
-                    : 'تمت الإزالة من المفضلة',
-                'success'
-            );
-        });
-        
-        // Share button functionality
-        shareBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            const designTitle = card.querySelector('.design-title').textContent;
-            const designImage = card.querySelector('img').src;
-            
-            // Create share data
-            const shareData = {
-                title: designTitle,
-                text: 'تحقق من هذا التصميم الرائع!',
-                url: window.location.href,
-                image: designImage
-            };
-            
-            // Try to use Web Share API
-            if (navigator.share) {
-                navigator.share(shareData)
-                    .then(() => showToast('تمت المشاركة بنجاح', 'success'))
-                    .catch(() => showToast('تم إلغاء المشاركة', 'info'));
-            } else {
-                // Fallback for browsers that don't support Web Share API
-                const tempInput = document.createElement('input');
-                document.body.appendChild(tempInput);
-                tempInput.value = window.location.href;
-                tempInput.select();
-                document.execCommand('copy');
-                document.body.removeChild(tempInput);
-                showToast('تم نسخ رابط التصميم', 'success');
-            }
-        });
-        
-        // Compare button functionality
-        compareBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            const icon = this.querySelector('i');
-            
-            // Toggle compare state
-            this.classList.toggle('active');
-            
-            // Show toast notification
-            showToast(
-                this.classList.contains('active') 
-                    ? 'تمت إضافة التصميم إلى المقارنة' 
-                    : 'تمت إزالة التصميم من المقارنة',
-                'info'
-            );
-            
-            // Update comparison bar
-            updateComparisonBar();
-        });
-
-        // Card click handler
-        card.addEventListener('click', function(e) {
-            // Only trigger if not clicking on action buttons
-            if (!e.target.closest('.design-actions')) {
-                // Get design data from the card
-                const designTitle = this.querySelector('.design-title').textContent;
-                
-                // Navigate directly to request page
-                window.location.href = `request.html?design=${encodeURIComponent(designTitle)}`;
+                this.classList.remove('active');
+                showToast('تم إزالة التصميم من المفضلة');
             }
         });
     });
+
+    // Share Button
+    const shareButtons = document.querySelectorAll('.btn-share');
+    shareButtons.forEach(button => {
+        button.addEventListener('click', async function(e) {
+            e.stopPropagation(); // Prevent modal from opening
+            const designCard = this.closest('.design-card');
+            const designTitle = designCard.querySelector('.design-title').textContent;
+            const designPrice = designCard.querySelector('.amount').textContent;
+            
+            const shareData = {
+                title: 'مشاركة تصميم',
+                text: `${designTitle} - ${designPrice} درهم`,
+                url: window.location.href
+            };
+
+            try {
+                if (navigator.share) {
+                    await navigator.share(shareData);
+                    showToast('تمت المشاركة بنجاح');
+                } else {
+                    // Fallback for browsers that don't support Web Share API
+                    copyToClipboard(window.location.href);
+                    showToast('تم نسخ الرابط');
+                }
+            } catch (err) {
+                console.error('Error sharing:', err);
+                showToast('حدث خطأ أثناء المشاركة');
+            }
+        });
+    });
+
+    // Compare Button
+    const compareButtons = document.querySelectorAll('.btn-compare');
+    const comparedDesigns = new Set();
     
-    // Comparison bar functionality
-    function updateComparisonBar() {
-        const selectedCards = document.querySelectorAll('.btn-compare.active');
-        const comparisonBar = document.querySelector('.comparison-bar');
-        
-        if (selectedCards.length >= 2) {
-            comparisonBar.classList.add('show');
-            comparisonBar.querySelector('.selected-count').textContent = 
-                `${selectedCards.length} تصاميم محددة`;
-        } else {
-            comparisonBar.classList.remove('show');
-        }
-    }
-    
-    // Toast notification function
-    function showToast(message, type = 'info') {
-        const toastContainer = document.querySelector('.toast-container') || createToastContainer();
+    compareButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent modal from opening
+            const designCard = this.closest('.design-card');
+            const designId = designCard.dataset.designId;
+            
+            if (this.classList.contains('active')) {
+                this.classList.remove('active');
+                comparedDesigns.delete(designId);
+                showToast('تم إزالة التصميم من المقارنة');
+            } else {
+                if (comparedDesigns.size >= 3) {
+                    showToast('يمكنك مقارنة 3 تصاميم كحد أقصى');
+                    return;
+                }
+                this.classList.add('active');
+                comparedDesigns.add(designId);
+                showToast('تمت إضافة التصميم للمقارنة');
+            }
+            
+            updateCompareBar();
+        });
+    });
+
+    // Toast Notification Function
+    function showToast(message) {
         const toast = document.createElement('div');
-        toast.className = `toast ${type}`;
+        toast.className = 'toast';
         toast.textContent = message;
         
-        toastContainer.appendChild(toast);
+        document.body.appendChild(toast);
         
-        // Show toast
-        setTimeout(() => toast.classList.add('show'), 100);
+        // Trigger reflow
+        toast.offsetHeight;
         
-        // Remove toast after 3 seconds
+        toast.classList.add('show');
+        
         setTimeout(() => {
             toast.classList.remove('show');
-            setTimeout(() => toast.remove(), 300);
+            setTimeout(() => {
+                document.body.removeChild(toast);
+            }, 300);
         }, 3000);
     }
-    
-    function createToastContainer() {
-        const container = document.createElement('div');
-        container.className = 'toast-container';
-        document.body.appendChild(container);
-        return container;
+
+    // Clipboard Copy Function
+    function copyToClipboard(text) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+    }
+
+    // Compare Bar Update Function
+    function updateCompareBar() {
+        let compareBar = document.querySelector('.comparison-bar');
+        
+        if (comparedDesigns.size > 0) {
+            if (!compareBar) {
+                compareBar = document.createElement('div');
+                compareBar.className = 'comparison-bar';
+                document.body.appendChild(compareBar);
+            }
+            
+            compareBar.innerHTML = `
+                <span>${comparedDesigns.size} تصاميم للمقارنة</span>
+                <button class="btn btn-primary" onclick="window.location.href='/compare.html'">
+                    مقارنة التصاميم
+                </button>
+            `;
+            
+            compareBar.classList.add('show');
+        } else if (compareBar) {
+            compareBar.classList.remove('show');
+            setTimeout(() => {
+                compareBar?.remove();
+            }, 300);
+        }
     }
 });
 

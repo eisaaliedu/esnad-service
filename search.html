@@ -130,13 +130,12 @@
                 <div class="row g-4">
                     <!-- Design Card 1 - Suggested -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="design-card" data-bs-toggle="modal" data-bs-target="#designDetailsModal" style="cursor: pointer;">
+                        <div class="design-card" data-bs-toggle="modal" data-bs-target="#designDetailsModal" data-design-id="design-1" style="cursor: pointer;">
                             <div class="design-card__image">
                                 <img src="https://sakan.ae/admin/Images/AMS-05_Style_Design1_Large202412181501173604.png" alt="تصميم A1" class="img-fluid" loading="lazy" onerror="this.src='path/to/fallback-image.jpg'; this.onerror=null;">
                                 <div class="design-card__overlay"></div>
                                 <div class="design-card__badges">
                                     <span class="badge-suggestion">مقترح لك</span>
-                                    <span class="badge-status">متاح</span>
                                 </div>
                                 <div class="design-actions">
                                     <button class="btn-action btn-favorite" aria-label="إضافة للمفضلة">
@@ -146,7 +145,7 @@
                                         <i class="fas fa-share-alt"></i>
                                     </button>
                                     <button class="btn-action btn-compare" aria-label="مقارنة">
-                                        <i class="fas fa-exchange-alt"></i>
+                                        <i class="fas fa-right-left"></i>
                                     </button>
                                 </div>
                             </div>
@@ -171,6 +170,194 @@
                                     <div class="spec-item" data-tooltip="المساحة الكلية">
                                         <i class="fas fa-ruler"></i>
                                         <span>250م²</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Design Card 2 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="design-card" data-bs-toggle="modal" data-bs-target="#designDetailsModal" data-design-id="design-2" style="cursor: pointer;">
+                            <div class="design-card__image">
+                                <img src="https://www.dh.sharjah.ae/Admin/Images/LWN-01_Style_Design1_Large202212201332270039.jpg" alt="تصميم B2" class="img-fluid" loading="lazy" onerror="this.src='path/to/fallback-image.jpg'; this.onerror=null;">
+                                <div class="design-card__overlay"></div>
+                                <div class="design-card__badges">
+                                    <span class="badge-suggestion">مقترح لك</span>
+                                </div>
+                                <div class="design-actions">
+                                    <button class="btn-action btn-favorite" aria-label="إضافة للمفضلة">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                    <button class="btn-action btn-share" aria-label="مشاركة">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                                    <button class="btn-action btn-compare" aria-label="مقارنة">
+                                        <i class="fas fa-right-left"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="design-card__content">
+                                <div class="design-card__header">
+                                    <h3 class="design-title">فيلا B2</h3>
+                                    <div class="design-price">
+                                        <i class="fas fa-coins"></i>
+                                        <span class="amount">920,000</span>
+                                        <span class="currency">درهم</span>
+                                    </div>
+                                </div>
+                                <div class="design-specs">
+                                    <div class="spec-item" data-tooltip="عدد الطوابق">
+                                        <i class="fas fa-building"></i>
+                                        <span>طابقين</span>
+                                    </div>
+                                    <div class="spec-item" data-tooltip="عدد الغرف">
+                                        <i class="fas fa-door-open"></i>
+                                        <span>5 غرف</span>
+                                    </div>
+                                    <div class="spec-item" data-tooltip="المساحة الكلية">
+                                        <i class="fas fa-ruler"></i>
+                                        <span>280م²</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Design Card 3 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="design-card" data-bs-toggle="modal" data-bs-target="#designDetailsModal" data-design-id="design-3" style="cursor: pointer;">
+                            <div class="design-card__image">
+                                <img src="https://www.dh.sharjah.ae/Admin/Images/HOR-01_Style_Design1_Large202401091301404636.jpg" alt="تصميم C3" class="img-fluid" loading="lazy" onerror="this.src='path/to/fallback-image.jpg'; this.onerror=null;">
+                                <div class="design-card__overlay"></div>
+                                <div class="design-card__badges">
+                                    <span class="badge-unavailable">غير متوفر</span>
+                                </div>
+                                <div class="design-actions">
+                                    <button class="btn-action btn-favorite" aria-label="إضافة للمفضلة">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                    <button class="btn-action btn-share" aria-label="مشاركة">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                                    <button class="btn-action btn-compare" aria-label="مقارنة">
+                                        <i class="fas fa-right-left"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="design-card__content">
+                                <div class="design-card__header">
+                                    <h3 class="design-title">فيلا C3</h3>
+                                    <div class="design-price">
+                                        <i class="fas fa-coins"></i>
+                                        <span class="amount">980,000</span>
+                                        <span class="currency">درهم</span>
+                                    </div>
+                                </div>
+                                <div class="design-specs">
+                                    <div class="spec-item" data-tooltip="عدد الطوابق">
+                                        <i class="fas fa-building"></i>
+                                        <span>طابقين</span>
+                                    </div>
+                                    <div class="spec-item" data-tooltip="عدد الغرف">
+                                        <i class="fas fa-door-open"></i>
+                                        <span>6 غرف</span>
+                                    </div>
+                                    <div class="spec-item" data-tooltip="المساحة الكلية">
+                                        <i class="fas fa-ruler"></i>
+                                        <span>320م²</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Design Card 4 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="design-card" data-bs-toggle="modal" data-bs-target="#designDetailsModal" data-design-id="design-4" style="cursor: pointer;">
+                            <div class="design-card__image">
+                                <img src="https://www.dh.sharjah.ae/Admin/Images/NXT-08_Style_Design1_202211101434509372.jpg" alt="تصميم D4" class="img-fluid" loading="lazy" onerror="this.src='path/to/fallback-image.jpg'; this.onerror=null;">
+                                <div class="design-card__overlay"></div>
+                                <div class="design-card__badges"></div>
+                                <div class="design-actions">
+                                    <button class="btn-action btn-favorite" aria-label="إضافة للمفضلة">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                    <button class="btn-action btn-share" aria-label="مشاركة">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                                    <button class="btn-action btn-compare" aria-label="مقارنة">
+                                        <i class="fas fa-right-left"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="design-card__content">
+                                <div class="design-card__header">
+                                    <h3 class="design-title">فيلا D4</h3>
+                                    <div class="design-price">
+                                        <i class="fas fa-coins"></i>
+                                        <span class="amount">890,000</span>
+                                        <span class="currency">درهم</span>
+                                    </div>
+                                </div>
+                                <div class="design-specs">
+                                    <div class="spec-item" data-tooltip="عدد الطوابق">
+                                        <i class="fas fa-building"></i>
+                                        <span>طابقين</span>
+                                    </div>
+                                    <div class="spec-item" data-tooltip="عدد الغرف">
+                                        <i class="fas fa-door-open"></i>
+                                        <span>5 غرف</span>
+                                    </div>
+                                    <div class="spec-item" data-tooltip="المساحة الكلية">
+                                        <i class="fas fa-ruler"></i>
+                                        <span>270م²</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Design Card 5 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="design-card" data-bs-toggle="modal" data-bs-target="#designDetailsModal" data-design-id="design-5" style="cursor: pointer;">
+                            <div class="design-card__image">
+                                <img src="https://www.dh.sharjah.ae/Admin/Images/ARK-09_Style_Design1_Large202204111401493968.png" alt="تصميم E5" class="img-fluid" loading="lazy" onerror="this.src='path/to/fallback-image.jpg'; this.onerror=null;">
+                                <div class="design-card__overlay"></div>
+                                <div class="design-card__badges"></div>
+                                <div class="design-actions">
+                                    <button class="btn-action btn-favorite" aria-label="إضافة للمفضلة">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                    <button class="btn-action btn-share" aria-label="مشاركة">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                                    <button class="btn-action btn-compare" aria-label="مقارنة">
+                                        <i class="fas fa-right-left"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="design-card__content">
+                                <div class="design-card__header">
+                                    <h3 class="design-title">فيلا E5</h3>
+                                    <div class="design-price">
+                                        <i class="fas fa-coins"></i>
+                                        <span class="amount">940,000</span>
+                                        <span class="currency">درهم</span>
+                                    </div>
+                                </div>
+                                <div class="design-specs">
+                                    <div class="spec-item" data-tooltip="عدد الطوابق">
+                                        <i class="fas fa-building"></i>
+                                        <span>طابقين</span>
+                                    </div>
+                                    <div class="spec-item" data-tooltip="عدد الغرف">
+                                        <i class="fas fa-door-open"></i>
+                                        <span>5 غرف</span>
+                                    </div>
+                                    <div class="spec-item" data-tooltip="المساحة الكلية">
+                                        <i class="fas fa-ruler"></i>
+                                        <span>290م²</span>
                                     </div>
                                 </div>
                             </div>
